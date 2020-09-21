@@ -1,20 +1,17 @@
-// Task1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <iostream>
-
-int main()
+#include <stdio.h>//подключение стандартной библиотеки ввода-вывода
+int ans(int a, int b, int c)//функция ans возвращает целое значение и обрабатывает 3 целых числа
 {
-    std::cout << "Hello World!\n";
+	return (-b) *c>a ? (-b) * c - a : a - c*(-b);//выражение с тернарным оператором, унарным минусом и алгебраическими операциями
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+int main()//основная функция main, выводящая целое значение
+{
+	int x, y, z;//3 локальные переменые с типом int
+	printf("enter integer number 1\n");//сообщение пользователю
+	scanf_s("%d", &x);//ввод целого числа с клавиатуры
+	printf("enter integer number 2\n");//сообщение пользователю
+	scanf_s("%d", &y);//ввод второго целого числа с клавиатуры
+	printf("enter integer number 3\n");//сообщение пользователю
+	scanf_s("%d", &z);//ввод третьего целого числа с клавиатуры
+	printf("%d", ans(x, y, z));//вывод целого числа - результата работы функции ans
+	return 0;//возврат функцией main целого числа
+}
