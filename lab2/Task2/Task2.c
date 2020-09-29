@@ -1,35 +1,42 @@
-﻿#include <stdio.h>
-#include <math.h>
-#include <locale.h>
+﻿#include <stdio.h>//ввод-вывод
+#include <math.h>//для использования функции modff()
+#include <locale.h>//Для локализации консоли
 void main() {
-	setlocale(LC_ALL, "RUS");
-	float a, b, c, d, x1, x2, s;
-	printf_s("a(x)^2+bx+c=0\n");
+	setlocale(LC_ALL, "RUS");//русификация консоли
+	float a, b, c, d, x1, x2, s;//объявление переменных
+	printf_s("a(x)^2+bx+c=0\n");//вывод на экран
 	printf_s("введите коэффициент a!=0:");
-	scanf_s("%f", &a);
+	scanf_s("%f", &a);//ввод коэффициента a
 	printf_s("введите коэффициент b:");
-	scanf_s("%f", &b);
+	scanf_s("%f", &b);//ввод коэффициента b
 	printf_s("введите свободный член c: ");
-	scanf_s("%f", &c);
-	d = b * b - 4 * a * c;
-	if (d > 0) {
-		if (modff(sqrt(d), &s) == 0) {
+	scanf_s("%f", &c);//ввод свободного члена
+	d = b * b - 4 * a * c;//вычисление дискриминанта
+	if (d > 0) {//ветка для положительного дискриминанта
+		if (modff(sqrt(d), &s) == 0) {//если корень
+//получился целым, то modff возвратит 0
 			printf_s("x1= %f\n", (-b + sqrt(d)) / (2 * a));
+			//вывод первого корня
 			printf_s("x2= %f\n", (-b - sqrt(d)) / (2 * a));
+			//вывод второго корня
 		}
-		else {
+		else {//ветка для иррационального корня из
+	        //дискриминанта
 			printf_s("x1= (%f", -b);
 			printf_s(" + sqrt(%f", d);
 			printf_s(")) / %f", 2 * a);
-			printf_s("\nx1= (%f", -b);
+			//вывод первого корня
+			printf_s("\nx2= (%f", -b);
 			printf_s(" - sqrt(%f", d);
 			printf_s(")) / %f", 2 * a);
+			//вывод второго корня
 		}
 	}
-	else if (d == 0) {
+	else if (d == 0) {//ветка для "нулевого" дискриминанта
 		printf_s("x1=x2= %f", (-b) / (2 * a));
+		//вывод корня
 	}
-	else {
+	else {//ветка для отрицательного дискриминанта
 		printf_s("Действительных корней нет");
 	}
 }
