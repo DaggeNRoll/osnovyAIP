@@ -12,11 +12,15 @@ int main() {
 //внутренний проход по элементам, обеспечивающий
 //их сравнение и перестановку (при надобности)
 			if (arr[j] > arr[j + 1]) {
-				int buf = j+1;
+				int buf = arr[j+1];
 				arr[j+1] = arr[j];
 				arr[j] = buf;
 			}
 		}
+	}
+	for (i = 0; i < n; i++) {
+		printf_s("%d", arr[i]);
+		printf_s(" ");
 	}
 	return 0;
 }
