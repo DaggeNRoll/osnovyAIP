@@ -1,19 +1,23 @@
 #include <stdio.h>
-
 #define k 1.247
 
 int main() {
 	int a[] = { 100,0,6,50,20,14,45,32,67 };
 	int n = sizeof(a) / sizeof(int);
+	int step = n - 1;
+	int i = 0;
 
-	for (int step = n-1; step > 0; step/=k) {
-		for (int j = 0; j < n - step; j++) {
-			if (a[j]>a[j+step]) {
-				int temp = a[j];
-				a[j] = a[j+step];
-				a[j+step] = temp;
+	while (step > 0) {
+		while (i < n - step) {
+			if (a[i] > a[i + step]) {
+				int temp = a[i];
+				a[i] = a[i + step];
+				a[i + step] = temp;
 			}
+			i++;
 		}
+		step /= k;
+		i = 0;
 	}
 
 	for (int i = 0; i < n; i++) {
