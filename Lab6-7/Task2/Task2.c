@@ -1,27 +1,22 @@
-#include <stdio.h>
-#define k 1.247
+#define k 1.247//объявление константы
 
 int main() {
 	int a[] = { 100,0,6,50,20,14,45,32,67 };
-	int n = sizeof(a) / sizeof(int);
+	int n = sizeof(a) / sizeof(int);//размер массива
 	int step = n - 1;
-	int i = 0;
+	int i, temp;
 
-	while (step > 0) {
+	while (step >= 1) {
+		i=0;//инициализация внутреннего итератора
 		while (i < n - step) {
-			if (a[i] > a[i + step]) {
-				int temp = a[i];
+			if (a[i] > a[i + step]) {//перестановка элементов
+				temp = a[i];
 				a[i] = a[i + step];
 				a[i + step] = temp;
 			}
-			i++;
+			i++;//инкремент внутреннего оператора
 		}
-		step /= k;
-		i = 0;
-	}
-
-	for (int i = 0; i < n; i++) {
-		printf_s("%d\n", a[i]);
+		step /= k;//уменьшение шага в k раз
 	}
 
 	return 0;
